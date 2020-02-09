@@ -41,9 +41,9 @@ Page({
   },
   getInputValue:function(e){
 
-    // console.log(e.detail.value)
+    console.log(e.detail.value)
     this.setData({
-      inputValue: e.detail.value,
+      // inputValue: e.detail.value,
       showView:false,
       showSuggest: true,
       showResult:false
@@ -81,7 +81,7 @@ Page({
   go_searchList:function(e){
     let that = this
     this.setData({
-      inputValue:e.detail.value,
+      // inputValue:e.detail.value,
       searchKey:e.detail.value,
       showView:false,
       showSuggest:false
