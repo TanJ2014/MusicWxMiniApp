@@ -10,7 +10,7 @@
 
 展示了搜索框、轮播图、四个快捷入口、最新音乐、精选歌单、推荐MV、精选电台、最新专辑等。
 
-![image-20200209112212240](readmePic\image-20200209112212240.png)
+![image-20200209112212240](https://github.com/TanJ2014/MusicWxMiniApp/raw/master/readmePic/image-20200209112212240.png)
 
 #### 2.主播电台
 
