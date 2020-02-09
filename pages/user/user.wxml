@@ -1,0 +1,11 @@
+<!--pages/user/user.wxml-->
+<view class="user">
+  <view class="userlogin">
+    <view class="music-view">
+      <image class="music" src="../../img/music.png"></image>
+    </view>
+      <view class="login-btn" bindtap="go_phone">
+        <text>手机号登录</text>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,113 @@
+/* play/play.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.background_img{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  /* bottom: 0; */
+  left: 0;
+  /* right: ; */
+  filter: blur(20px);
+  z-index: -1;
+  transform: scale(1.5);
+}
+.music-brief{
+  width: 100%;
+  margin-top: 10rpx;
+}
+.music-name,.music-songer{
+  width: 100%;
+  text-align: center;
+}
+.music-name text{
+  color:white;
+  font-size: 40rpx;
+}
+.music-songer text{
+  color: white;
+  font-size: 30rpx;
+}
+.sing-show{
+  width: 100%;
+  margin: 30% 0;
+  text-align: center;
+  color: white;
+}
+.songername{
+  margin: 5px;
+}
+.coverImg.play{
+  animation: rotate 15s linear infinite ;
+  animation-fill-mode: forwards;
+}
+.moveCircle{
+  text-align: center;
+}
+.coverImg {
+  width: 400rpx;
+  height: 400rpx;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  animation: rotate 15s linear infinite;
+  animation-play-state: paused;
+}
+@keyframes rotate {
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@keyframes moveCircle {
+  0%{
+    width: 400rpx;
+    height: 400rpx;
+    border: 1px solid rgba(255, 255, 255, 1)
+  }
+  30%{
+    width: 510rpx;
+    height: 510rpx;
+    border: 1px solid rgba(255, 255, 255, 0.8)
+  }
+  50%{
+    width: 610rpx;
+    height: 610rpx;
+    border: 1px solid rgba(255, 255, 255, 0.6)
+  }
+  80%{
+    width: 700rpx;
+    height: 700rpx;
+    border: 1px solid rgba(255, 255, 255, 0.4)
+  }
+  99%{
+    width: 375px;
+    height: 375px;
+    border: 1px solid rgba(255, 255, 255, 0.1)
+  }
+  100%{
+    width: 0px;
+    height: 0px;
+    border: 1px solid rgba(255, 255, 255, 0)
+  }
+}
+.btns{
+  width: 100%;  
+}
+.btns image{
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+}
+.fl{
+  float: left;
+}
+.btn-item{
+  display: block;
+  width: 33%;
+  text-align: center;
+}

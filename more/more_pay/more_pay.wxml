@@ -1,0 +1,13 @@
+<view class="container_newsong">
+  <text class="newsong">付费精品</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{pay}}" data-id="{{item.id}}" bindtap="handlePlayDj">
+      <image src="{{item.picUrl}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.name}}</text>
+          <text class="songername">更新至{{item.lastProgramName}}</text>
+          <text class="songername">{{item.programCount}}个节目</text>
+      </view>
+    </view>
+  </view>
+</view>

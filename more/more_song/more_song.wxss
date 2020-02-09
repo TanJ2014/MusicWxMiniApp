@@ -1,0 +1,42 @@
+/* more/more_song/more_song.wxss */
+.container_newsong{
+  padding: 15px 10px;
+}
+.newsong{
+  display: block;
+  font-size: 1.2rem;
+}
+.newsong_list{
+  width: 100%;
+}
+.newsong_item{
+  float: left;
+  width: 49%;
+  margin-top: 10px;
+}
+.newsong_item image{
+  width:335rpx;
+  height: 335rpx;
+  border-radius: 10rpx;
+}
+.newsong_desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 10rpx;
+}
+.newsong_desc text{
+  display: block;
+  margin-top: 5px;
+}
+.newsong_desc .songname{
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.newsong_desc .songername{
+  font-size: 0.8rem;
+  display: inline;
+}

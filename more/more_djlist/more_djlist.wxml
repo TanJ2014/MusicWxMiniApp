@@ -1,0 +1,7 @@
+<!--more/more_djlist/more_djlist.wxml-->
+<view class="djList">
+  <view class="djList-item" wx:for="{{djList}}" bindtap="handlePlayDj">
+      <image src="{{item.pic56x56Url}}"></image>
+      <text>{{item.name}}</text>
+  </view>
+</view>

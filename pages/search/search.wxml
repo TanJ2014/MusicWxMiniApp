@@ -1,0 +1,61 @@
+<view class="search container">
+  <!-- 搜索框 -->
+  <view class="search_form">
+    <view class="search_sub">
+      <input class="search_form_input" 
+      placeholder-class="phcolor" type="search" 
+      value="{{inputValue}}"
+      bindconfirm="go_searchList"
+      bindinput='getInputValue'
+      bindblur="saveHistory"
+      placeholder="请输入歌曲名或歌手"/>
+      <view class="search_form_clear">
+        <icon type="clear" size="16" color='#EDA8A3' bindtap="clearInput"></icon>
+      </view>
+    </view>
+    <view class="search_form_cancel" bindtap="cancel"> 取消</view>
+  </view>
+  <!-- 热门搜索 -->
+  <view class="search_hot {{showView?'disB':'disN'}}">
+    <view class="search_title">
+      <text>热门搜索</text>
+    </view>
+    <view class="hot_list clearfix">
+      <view wx:for="{{searchHot}}">
+        <view class="hot_item" data-value="{{item.first}}"
+        bindtap="go_hotList">
+          <text>{{item.first}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索历史 -->
+  <view class="search_history {{showView&&history.length?'disB':'disN'}}">
+    <view class="sub clearfix">
+      <view class="search_title">
+        <text>搜索历史</text>
+      </view>
+      <view class="clear_history" bindtap="clear_history">
+        <text>清除历史</text>
+      </view>
+    </view>
+    <view class="hot_list clearfix">
+      <view class="hot_item" wx:for="{{history}}">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 建议搜索 -->
+  <view class="suggest_search {{showSuggest?'disB':'disN'}}">
+    <view class="suggest_text" wx:for="{{searchSuggest}}" data-key="{{item.keyword}}" bindtap="handleSearchKey">
+      <text>{{item.keyword}}</text>
+    </view>
+  </view>
+  <!-- 搜索结果 -->
+  <view class="search_result {{showResult?'disB':'disN'}}">
+    <view class="suggest_text" wx:for="{{searchResult}}" data-id="{{item.id}}" bindtap="handlePlayAudio">
+      <text class="sing">{{item.name}}</text>
+      <text class="sing_desc">{{item.artists[0].name}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/love/love",
+    "pages/search/search",
+    "play/play",
+    "play/play_mv",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/user/user_phone/user_phone",
+    "more/more_sheet/moremore_sheet",
+    "more/more_song/more_song",
+    "more/more_sheet/more_sheet",
+    "more/more_mv/more_mv",
+    "more/more_radio/more_radio",
+    "more/more_newest/more_newest",
+    "more/more_songer/more_songer",
+    "more/more_songer/moremore_songer",
+    "more/more_toplist/more_toplist",
+    "more/more_djlist/more_djlist",
+    "more/more_program/more_program",
+    "more/more_pay/more_pay"
+  ],
+  "requiredBackgroundModes": ["audio", "location"],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "点滴音乐",
+    "navigationBarBackgroundColor":"#FB7299",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "position":"bottom",
+    "color": "#8D8D8D",  
+    "selectedColor": "#FB7299",  
+    "list": [{
+      "selectedIconPath":"img/selected-music.png",
+      "iconPath":"img/music2.png",
+      "pagePath": "pages/index/index",
+      "text": "乐库"
+    }, {
+      "selectedIconPath":"img/playing.png",
+      "iconPath":"img/selected-playing.png",
+      "pagePath": "pages/love/love"
+    }, {
+      "selectedIconPath":"img/selected-me.png",
+      "iconPath":"img/me.png",
+      "pagePath": "pages/user/user",
+      "text": "我的"
+    }]
+  }
+} 

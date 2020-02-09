@@ -1,0 +1,29 @@
+/* play/play_mv.wxss */
+video{
+  width: 100%;
+}
+.mv_text{
+  padding: 20rpx;
+}
+.mv_name{
+  font-size: 20px;
+  margin-bottom: 10rpx;
+}
+.mv_dis text{
+  display: inline-block;
+  margin-right: 20rpx;
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+.mv_desc{
+  margin-bottom: 10rpx;
+  line-height: 26px;
+  font-size: 0.9em;
+  color: #333;
+}
+.mv_other{
+  line-height: 26px;
+  font-size: 0.9em;
+  color: #999;
+}

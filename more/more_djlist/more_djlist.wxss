@@ -1,0 +1,25 @@
+/* more/more_djlist/more_djlist.wxss */
+.djList-item image{
+  width: 70rpx;
+  height: 70rpx;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+.djList{
+  width: 100%;
+}
+.djList-item{
+  width: 50%;
+  height: 105rpx;
+  float: left;
+  box-sizing: border-box;
+  padding: 21rpx;
+  border-bottom: 1px solid #efefef;
+}
+.djList-item:nth-child(2n+1){
+  border-right: 1px solid #efefef;
+}
+.djList-item text{
+  vertical-align: middle;
+  padding-left: 10px;
+}

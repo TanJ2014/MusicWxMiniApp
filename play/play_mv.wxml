@@ -1,0 +1,14 @@
+<!--play/play_mv.wxml-->
+<video controls src="{{mvDetail.brs[480]}}" autoplay="true" loop="true"></video>
+<view class="mv_text">
+  <view class="mv_name">{{mvDetail.name}}</view>
+  <view class="mv_dis"> 
+    <text>发行： {{mvDetail.publishTime}}</text>
+    <text>播放次数：{{mvDetail.playCount}}</text>
+  </view>
+  <view class="mv_desc"> {{mvDetail.desc}}</view>
+  <view class="mv_other"> 点赞：{{mvDetail.likeCount}}</view>
+  <view class="mv_other"> 收藏：{{mvDetail.subCount}}</view>
+  <view class="mv_other"> 评论：{{mvDetail.commentCount}}</view>
+  <view class="mv_other"> 分享：{{mvDetail.shareCount}}</view>
+</view>

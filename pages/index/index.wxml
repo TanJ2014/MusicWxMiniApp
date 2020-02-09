@@ -1,0 +1,358 @@
+<!--index.wxml-->
+<view class="home container">
+<!-- 搜索框 -->
+  <view class="home_search">
+    <view bindtap="go_search">
+        <input type="text" placeholder="请输入歌手或者歌曲名"  placeholder-class="phClass"/>
+    </view>
+  </view>
+  <!-- 个性推荐与主播电台 -->
+  <view class='swiper_header'>
+    <view class='swiper_left {{activeIndex === 0?"swiper_line":""}}'>个性推荐</view>
+    <view class='swiper_right {{activeIndex === 1?"swiper_line":""}}'>主播电台</view>
+  </view>
+  <swiper class="home_swiper" bindchange="changeLine" current="{{activeIndex}}">
+    <!-- 个性推荐 -->
+      <swiper-item class="recommend">
+        <!-- 轮播图 -->
+        <block>
+           <swiper class="gexin_swiper" autoplay="true">
+              <swiper-item wx:for="{{banner}}" data-id="{{item.targetId}}" bindtap="handlePlayAudio">
+                <image src='{{item.imageUrl}}'/>
+              </swiper-item>
+              
+           </swiper>
+        </block>
+        <!-- 推荐的四个入口 -->
+        <view class="recmdList">
+            <view class="recmdItem"  bindtap="go_MV">
+               <view class="recmdImage">
+                  <image src="../../img/icon1.png"></image>
+               </view>
+               <text>推荐MV</text>
+            </view>    
+             <view class="recmdItem">
+               <view class="recmdImage" bindtap="go_songer">
+                  <image src="../../img/icon2.png"></image>
+               </view>
+               <text>歌手榜</text>
+            </view> 
+             <view class="recmdItem">
+               <view class="recmdImage" bindtap="go_sheet">
+                  <image src="../../img/icon3.png"></image>
+               </view>
+               <text>歌单</text>
+            </view> 
+             <view class="recmdItem">
+               <view class="recmdImage" bindtap="go_toplist">
+                  <image src="../../img/rank.png"></image>
+               </view>
+               <text>榜单排行</text>
+            </view> 
+        </view>
+        <!--最新音乐-->
+        <view class="newest_music">
+            <text class="subtitle" bindtap="go_newsong">最新音乐 >></text>
+            <view class="newest_music_list">
+                <view wx:for="{{newsong_index}}" bindtap="handlePlayAudio" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.song.album.picUrl}}"/>
+                    <text class="music_name">{{item.name}}</text>
+                    <text class="music_songer">{{item.song.artists[0].name}}</text>
+                </view>
+            </view> 
+        </view>
+         <!--精选歌单-->
+        <view class="newest_music">
+            <text class="subtitle" bindtap="go_sheet">精选歌单 >></text>
+            <view class="newest_music_list">
+                <view wx:for="{{songsheet_index}}" class="newest_music_item" data-id="{{item.id}}" bindtap="handleSheet">
+                    <image src="{{item.coverImgUrl}}"></image>
+                    <text class="music_name">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <!-- 推荐MV -->
+         <view class="newest_music">
+            <text class="subtitle" bindtap="go_MV">推荐MV >></text>
+            <view class="newest_mv_list">
+                <view wx:for="{{recommend_MV}}" class="newest_mv_item" data-id="{{item.id}}" bindtap="handlePlayMv">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <!--精选电台-->
+        <view class="newest_music">
+            <text class="subtitle" bindtap="go_radio">精选电台 >></text>
+            <view class="newest_music_list">
+                <view wx:for="{{dj_index}}" class="newest_music_item" bindtap="handlePlayDj">
+                    <image src="{{item.picUrl}}"></image>
+                    <text class="music_name">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <!--最新专辑-->
+        <view class="newest_music">
+            <text class="subtitle" bindtap="go_newest">最新专辑 >></text>
+            <view class="newest_music_list">
+                <view wx:for="{{newAlbum}}" data-id="{{item.id}}" class="newest_music_item" bindtap="handlePlayAudio">
+                    <image src="{{item.picUrl}}"></image>
+                    <text class="music_name">{{item.name}}</text>
+                    <text class="music_songer">{{item.company}}</text>
+                </view>
+            </view> 
+        </view>
+      </swiper-item>
+    <!-- 主播电台 -->
+    <swiper-item class="radio">
+        <!-- 轮播图 -->
+        <swiper class="gexin_swiper" autoplay="true">
+          <block>
+            <swiper-item wx:for="{{dj_banner}}" data-id="{{item.targetId}}" bindtap="handlePlayAudio">
+              <image src="{{item.imageUrl}}"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- 推荐的四个入口 -->
+        <view class="recmdList">
+            <view class="recmdItem"  bindtap="go_DJList">
+               <view class="recmdImage">
+                  <image src="../../img/sort.png"></image>
+               </view>
+               <text>电台分类</text>
+            </view>    
+             <view class="recmdItem" bindtap="go_program">
+               <view class="recmdImage">
+                  <image src="../../img/program.png"></image>
+               </view>
+               <text>推荐节目</text>
+            </view> 
+             <view class="recmdItem" bindtap="go_pay">
+               <view class="recmdImage">
+                  <image src="../../img/fine.png"></image>
+               </view>
+               <text>付费精品</text>
+            </view> 
+             <view class="recmdItem" bindtap="go_radio">
+               <view class="recmdImage">
+                  <image src="../../img/icon4.png"></image>
+               </view>
+               <text>精选电台</text>
+            </view> 
+        </view>
+        <!--创作翻唱-->
+        <view class="newest_music">
+            <text class="subtitle">创作|翻唱</text>
+            <text class="refresh" data-name="more_recommend_create" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_create}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <!--3D|电子-->
+        <view class="newest_music">
+            <text class="subtitle">3D|电子</text>
+            <text class="refresh" data-name="more_d3" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{d3}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <!--情感调频-->
+        <view class="newest_music">
+            <text class="subtitle">情感调频</text>
+            <text class="refresh" data-name="more_recommend_feeling" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_feeling}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                     <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <!--音乐故事-->
+        <view class="newest_music">
+            <text class="subtitle">音乐故事</text>
+            <text class="refresh" data-name="more_recommend_musicstory" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_musicstory}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">二次元</text>
+            <text class="refresh" data-name="more_recommend_2D" bindtap="change" >换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_2D}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <view class="newest_music">
+            <text class="subtitle">有声书</text>
+            <text class="refresh" data-name="more_recommend_audiobook" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_audiobook}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <view class="newest_music">
+            <text class="subtitle">广播剧</text>
+            <text class="refresh" data-name="more_recommend_radioplay" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_radioplay}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">美文读物</text>
+            <text class="refresh" data-name="more_recommend_reading" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_reading}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">相声曲艺</text>
+            <text class="refresh" data-name="more_recommend_crosstalk" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_crosstalk}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">人文历史</text>
+            <text class="refresh" data-name="more_recommend_history" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_history}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">脱口秀</text>
+            <text class="refresh" data-name="more_recommend_talkshow" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_talkshow}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">娱乐|影视</text>
+            <text class="refresh" data-name="more_recommend_movies" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_movies}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">外语世界</text>
+            <text class="refresh" data-name="more_recommend_foreignlanguage" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_foreignlanguage}}" bindtap="handlePlayDj" data-id="{{item.targetId}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">知识技能</text>
+            <text class="refresh" data-name="more_recommend_skills" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_skills}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">亲子宝贝</text>
+            <text class="refresh" data-name="more_recommend_baby" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_baby}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">校园|教育</text>
+            <text class="refresh" data-name="more_recommend_education" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_education}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+        <view class="newest_music">
+            <text class="subtitle">商业财经</text>
+            <text class="refresh" data-name="more_recommend_finance" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_finance}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <view class="newest_music">
+            <text class="subtitle">科技科学</text>
+            <text class="refresh" data-name="more_recommend_science" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_science}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>
+         <view class="newest_music">
+            <text class="subtitle">路途|城市</text>
+            <text class="refresh" data-name="more_recommend_tourism" bindtap="change">换一换</text>
+            <view class="newest_music_list">
+                <view wx:for="{{recommend_tourism}}" bindtap="handlePlayDj" data-id="{{item.id}}"  class="newest_music_item">
+                    <image src="{{item.picUrl}}"/>
+                    <text class="music_name">{{item.rcmdtext}}</text>
+                    <text class="music_songer">{{item.name}}</text>
+                </view>
+            </view> 
+        </view>  
+    </swiper-item>
+  </swiper>
+</view>

@@ -1,0 +1,35 @@
+/* more/more_sheet/moremore_sheet.wxss */
+.sheet_item::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+.sheet_item{
+  padding: 16rpx 0;
+  border-bottom: 1px dotted #ddd;
+}
+.sheet_item_left{
+  float: left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.sheet_item_left text{
+  line-height:50px;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+.sheet_item_right{
+  float: left;
+  width: calc(100% - 50px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sheet_item_title{
+  font-size: 1.2rem;
+}
+.sheet_item_desc{
+  margin-top: 16rpx;
+  font-size: 0.7rem;
+}

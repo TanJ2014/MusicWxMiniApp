@@ -1,0 +1,13 @@
+<!--more/more_song/more_song.wxml-->
+<view class="container_newsong">
+  <text class="newsong">MV</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{mvList}}" data-id="{{item.id}}" bindtap="playMV">
+      <image src="{{item.cover}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.name}}</text>
+          <text class="songername">{{item.artistName}}</text>
+      </view>
+    </view>
+  </view>
+</view>

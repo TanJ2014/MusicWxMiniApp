@@ -1,0 +1,13 @@
+<!--more/more_song/more_song.wxml-->
+<view class="container_newsong">
+  <text class="newsong">最新音乐</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{newsong}}" data-id="{{item.id}}" bindtap="handlePlayAudio">
+      <image src="{{item.picUrl}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.name}}</text>
+          <text class="songername" wx:for="{{item.song.artists}}">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<!--more/more_sheet/more_sheet.wxml-->
+<!--more/more_song/more_song.wxml-->
+<view class="container_newsong">
+  <text class="newsong">推荐节目</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{programs}}" data-id="{{item.id}}" bindtap="handlePlayDj">
+      <image src="{{item.coverUrl}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.reason}}</text>
+          <text class="songername">{{item.radio.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

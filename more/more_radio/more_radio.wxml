@@ -1,0 +1,12 @@
+<view class="container_newsong">
+  <text class="newsong">精选电台</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{DJ}}" bindtap="handlePlayDj">
+      <image src="{{item.picUrl}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.name}}</text>
+          <text class="songername">{{item.dj.nickname}}</text>
+      </view>
+    </view>
+  </view>
+</view>

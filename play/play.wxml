@@ -1,0 +1,35 @@
+<image src="{{song.al.picUrl}}" class="background_img"></image>
+<view class="container">
+  <!-- 歌名歌手 -->
+  <view class="music-brief">
+    <view class="music-name">
+      <text>{{song.name}}</text>
+    </view>
+    <view class="music-songer">
+      <text wx:for="{{song.ar}}" class="songername">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 封面 -->
+  <view class="sing-show">
+     <view hidden="{{showLyrics}}" class="moveCircle play" bindtap="getLyrics">
+      <image class="coverImg {{isPlay?'play':''}}"  src="{{song.al.picUrl}}"></image>
+     </view>
+     <view hidden="{{!showLyrics}}" bindtap="getLyrics">
+        <text>纯音乐，请欣赏</text>
+     </view>
+  </view>
+  <!-- 按钮 -->
+  <view class="btns clearfix">
+    <view class="btn-item fl">
+      <image src="../img/lastSong.png" bindtap=""></image>
+    </view>
+     <view class="btn-item fl">
+      <image wx:if="{{isPlay}}" src="../img/suspend.png" bindtap="togglePlay"></image>
+       <image wx:if="{{!isPlay}}" src="../img/ajf.png" bindtap="togglePlay"></image>
+    </view>
+     <view class="btn-item fl">
+      <image src="../img/nextSong.png" bindtap=""></image>
+    </view>
+  </view>
+</view>

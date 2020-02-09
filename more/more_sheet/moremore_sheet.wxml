@@ -1,0 +1,14 @@
+<!--more/more_sheet/moremore_sheet.wxml-->
+<view>
+  <view class="sheet_list">
+    <view class="sheet_item" wx:for="{{songList}}" data-id="{{item.id}}" bindtap="handlePlayAudio" >
+        <view class="sheet_item_left">
+          <text>{{index+1}}</text>
+        </view>
+        <view class="sheet_item_right">
+           <view class="sheet_item_title">{{item.name}}</view>
+           <view class="sheet_item_desc">{{item.ar[0].name}} - {{item.al.name}}</view>
+        </view>
+    </view>
+  </view>
+</view>

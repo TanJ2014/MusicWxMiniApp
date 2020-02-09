@@ -1,0 +1,12 @@
+<view class="container_newsong">
+  <text class="newsong">精选歌单</text>
+  <view class="newsong_list">
+    <view class="newsong_item" wx:for="{{songsheet}}" data-id="{{item.id}}" bindtap="handleSheet">
+      <image src="{{item.coverImgUrl}}"></image>
+      <view class="newsong_desc">
+          <text class="songname">{{item.name}}</text>
+          <text class="songername">{{item.creator.nickname}}</text>
+      </view>
+    </view>
+  </view>
+</view>
