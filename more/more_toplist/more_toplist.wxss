@@ -1,0 +1,19 @@
+/* more/more_toplist/more_toplist.wxss */
+.grade{
+  width: 100%;
+}
+.viewItem{
+  float: left;
+  width: 50%;
+  margin-top: 20rpx;
+}
+.viewItem image{
+  width: 90%;
+  margin-left: 5%;
+  height: 160px;
+  border-radius: 16rpx;
+}
+.viewItem text{
+  width: 90%;
+  margin-left: 5%;
+}

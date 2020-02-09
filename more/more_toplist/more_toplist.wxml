@@ -1,0 +1,9 @@
+<!--more/more_toplist/more_toplist.wxml-->
+<view>
+  <view class="grade">
+    <view class="viewItem" wx:for="{{topList}}">
+      <image src="{{item.coverImgUrl}}"></image>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>
