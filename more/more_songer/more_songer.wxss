@@ -1,0 +1,39 @@
+/* more/more_songer/more_songer.wxss */
+.fl{
+  float: left;
+}
+.clearfix::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+.songer-item{
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
+.songer-index{
+  width: 100rpx;
+  text-align: center;
+}
+.songer-index text{
+  font-size: 1.2rem;
+  line-height: 200rpx;
+  color: #666;
+}
+.songer-image image{
+  width: 240rpx;
+  height: 200rpx;
+  border-radius: 18rpx;
+}
+.songer-desc{
+  padding-left: 10px;
+}
+.songer-desc text{
+  display: block;
+}
+.songer-desc text:last-child{
+  margin-top: 130rpx;
+  font-size: .8rem;
+  color:#ccc;
+}

@@ -1,0 +1,17 @@
+<!--more/more_songer/more_songer.wxml-->
+<view class="songer">
+  <view class="songer-list">
+    <view class="songer-item clearfix" wx:for="{{songList}}" data-id="{{item.id}}" bindtap="go_list">
+        <view class="songer-index fl">
+          <text>{{index+1}}</text>
+        </view>
+        <view class="songer-image fl">
+          <image src="{{item.picUrl}}"></image>
+        </view>
+        <view class="songer-desc fl">
+          <text>{{item.name}}</text>
+          <text>{{item.score}}热度</text>
+        </view>
+    </view>
+  </view>
+</view>
